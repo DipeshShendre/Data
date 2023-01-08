@@ -1,0 +1,23 @@
+import pandas as pd
+
+import sklearn
+
+from sklearn import linear_model
+
+df=pd.read_csv('/storage/emulated/0/Download/canada_per_capita_income.csv')
+
+y=df['per capita income (US$)']
+
+X=df[['year']]
+
+from sklearn.model_selection import train_test_split
+
+X_train,X_test,y_train,y_test=train_test_split(X,y)
+
+from sklearn.linear_model import LinearRegression
+
+model = LinearRegression()
+
+model.fit(X_train,y_train)
+
+print(model.predict(X_test))
